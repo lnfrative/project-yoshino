@@ -8,15 +8,27 @@ package com.frative.project.yoshino;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
 public class ProjectYoshino extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
     }
     
     @Override
     public void start(Stage stage) {
-        stage.setTitle(STYLESHEET_MODENA);
-        stage.show();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/MainView.fxml"));
+            Scene scene = new Scene(root);
+            
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 }

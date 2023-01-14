@@ -5,10 +5,6 @@
 
 package com.frative.project.yoshino;
 
-/**
- *
- * @author infrative
- */
 public class ProjectYoshino {
 
     public static void main(String[] args) {

@@ -6,7 +6,13 @@ package controllers;
 
 import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import models.*;
 
@@ -15,25 +21,66 @@ public class MainController {
     private ArrayList<Image> images = new ArrayList();
     
     @FXML
+    private VBox container;
+    
+    @FXML
     private ListView albumesListView;
     
     public void initialize() {
-        System.out.println("initialized.");
+        // TODO: Init
     }
     
     public void openWindowToCreateAlbum() {
-        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/create_album.fxml"));
+            Parent root = loader.load();
+            
+            CreateAlbumController controller = loader.getController();
+            controller.setMainController(this);
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(container.getScene().getWindow());
+            
+            stage.setTitle("Create album");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
     
-    public void createAlbum() {
-        albumesListView.getItems().add("hellow world");
+    public void addAlbum(Album album) {
+        albumes.add(album);
+        buildAlbumesListView();
     }
+    
+
     
     public void removeAlbum() {
         int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
         
         if (selectedIndex != -1) {
-            albumesListView.getItems().remove(selectedIndex);
+            albumes.remove(selectedIndex);
+            buildAlbumesListView();
+        }
+    }
+
+    public ArrayList<Album> getAlbumes() {
+        return albumes;
+    }
+
+    public ArrayList<Image> getImages() {
+        return images;
+    }
+    
+    private void buildAlbumesListView() {
+        albumesListView.getItems().clear();
+        
+        for (Album album : albumes) {
+            albumesListView.getItems().add(album.getName());
         }
     }
 }

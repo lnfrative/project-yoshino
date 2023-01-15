@@ -25,6 +25,7 @@ public class ProjectYoshino extends Application {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/main.fxml"));
             Scene scene = new Scene(root);
             
+            stage.setTitle("Picture Yoshino");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

@@ -35,10 +35,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -48,7 +48,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -101,19 +101,15 @@
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <ScrollPane layoutY="48.0" prefHeight="438.0" prefWidth="234.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" />
-                    </content>
-                  </ScrollPane>
+                  <ListView fx:id="albumes" layoutY="47.0" prefHeight="436.0" prefWidth="223.0" />
                   <HBox alignment="CENTER" layoutX="1.0" layoutY="500.0" prefHeight="37.0" prefWidth="222.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Crear álbum">
+                        <Button mnemonicParsing="false" onAction="#createAlbum" text="Crear álbum">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Eliminar" />
+                        <Button mnemonicParsing="false" onAction="#removeAlbum" text="Eliminar" />
                      </children>
                   </HBox>
           </children>

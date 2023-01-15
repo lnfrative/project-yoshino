@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import models.*;
+import controllers.*;
 
 public class ProjectYoshino extends Application {
     private ArrayList<Album> albumes = new ArrayList();
@@ -26,7 +27,7 @@ public class ProjectYoshino extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/views/MainView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/main.fxml"));
             Scene scene = new Scene(root);
             
             stage.setScene(scene);

@@ -21,6 +21,10 @@ public class MainController {
         System.out.println("initialized.");
     }
     
+    public void openWindowToCreateAlbum() {
+        
+    }
+    
     public void createAlbum() {
         albumesListView.getItems().add("hellow world");
     }

@@ -6,18 +6,20 @@ package models;
 
 import java.util.ArrayList;
 
-public class Image {
+public class Image extends Model {
     private String description;
     private String lugar;
     private String fecha;
     private ArrayList<String> personas = new ArrayList();
     private Integer albumId;
     
-    public Image(String description, String lugar, String fecha) {
-        this(null, description, lugar, fecha);
+    public Image(String description, String lugar, String fecha, ArrayList<Image> images) {
+        this(null, description, lugar, fecha, images);
     }
     
-    public Image(Integer albumId, String description, String lugar, String fecha) {
+    public Image(Integer albumId, String description, String lugar, String fecha, ArrayList<Image> images) {
+        super(images);
+        
         this.description = description;
         this.lugar = lugar;
         this.fecha = fecha;

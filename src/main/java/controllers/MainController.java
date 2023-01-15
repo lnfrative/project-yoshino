@@ -4,22 +4,32 @@
  */
 package controllers;
 
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
+import models.*;
+
 public class MainController {
+    private ArrayList<Album> albumes = new ArrayList();
+    private ArrayList<Image> images = new ArrayList();
+    
     @FXML
-    private ListView albumes;
+    private ListView albumesListView;
+    
+    public void initialize() {
+        System.out.println("initialized.");
+    }
     
     public void createAlbum() {
-        albumes.getItems().add("hellow world");
+        albumesListView.getItems().add("hellow world");
     }
     
     public void removeAlbum() {
-        int selectedIndex = albumes.getSelectionModel().getSelectedIndex();
+        int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
         
         if (selectedIndex != -1) {
-            albumes.getItems().remove(selectedIndex);
+            albumesListView.getItems().remove(selectedIndex);
         }
     }
 }

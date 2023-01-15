@@ -9,16 +9,11 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import models.*;
-import controllers.*;
 
 public class ProjectYoshino extends Application {
-    private ArrayList<Album> albumes = new ArrayList();
-    private ArrayList<Image> images = new ArrayList();
 
     public static void main(String[] args) throws IOException {
         launch(args);

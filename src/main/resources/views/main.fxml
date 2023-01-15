@@ -101,7 +101,7 @@
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <ListView fx:id="albumes" layoutY="47.0" prefHeight="436.0" prefWidth="223.0" />
+                  <ListView fx:id="albumesListView" layoutY="47.0" prefHeight="436.0" prefWidth="223.0" />
                   <HBox alignment="CENTER" layoutX="1.0" layoutY="500.0" prefHeight="37.0" prefWidth="222.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createAlbum" text="Crear álbum">

@@ -4,12 +4,5 @@
  */
 package controllers;
 
-import javafx.fxml.FXML;
-
 public class AlbumController {
-    
-    @FXML
-    public void createAlbum() {
-        System.out.println("dede");
-    }
 }

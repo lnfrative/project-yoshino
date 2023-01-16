@@ -6,8 +6,14 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 public class CreateImageController {
+    private MainController mainController;
+    
+    @FXML
+    private Pane container;
+    
     @FXML
     private TextField descriptionField;
     
@@ -25,6 +31,18 @@ public class CreateImageController {
     }
     
     public void onCancel() {
+        destroy();
+    }
+    
+    public void onBuscarImagen() {
         
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+    
+    private void destroy() {
+        container.getScene().getWindow().hide();
     }
 }

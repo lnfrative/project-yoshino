@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import models.*;
 
 public class MainController {
+    private Integer previousAlbumSelected = -1;
+    
     private ArrayList<Album> albumes = new ArrayList();
     private ArrayList<Image> images = new ArrayList();
     
@@ -47,9 +49,12 @@ public class MainController {
             protected void updateItem(Image image, boolean empty) {
                 super.updateItem(image, empty);
                 
+                if (empty) {
+                    setGraphic(null);
+                }
+                
                 if (!empty) {
                     imageItem.setImage(image);
-                
                     setGraphic(imageItem);
                 }
             }
@@ -103,6 +108,15 @@ public class MainController {
             albumes.remove(selectedIndex);
             buildAlbumesListView();
         }
+    }
+    
+    public void onSelectAlbum() {
+        int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != previousAlbumSelected && selectedIndex != -1) {
+            buildImagesListView();
+        }
+        
+        previousAlbumSelected = selectedIndex;
     }
 
     public ArrayList<Album> getAlbumes() {
@@ -166,10 +180,10 @@ public class MainController {
     private void buildImagesListView() {
         imagenesListView.getItems().clear();
         
-        Album albumSelected = albumes.get(albumesListView.getSelectionModel().getSelectedIndex());
+        Integer albumSelectedIndex = albumes.get(albumesListView.getSelectionModel().getSelectedIndex()).getId();
         
         for (Image image : images) {
-            if (albumSelected.getId().equals(image.getAlbumId())) {
+            if (albumSelectedIndex == image.getAlbumId()) {
                 imagenesListView.getItems().add(image);
             }
         }

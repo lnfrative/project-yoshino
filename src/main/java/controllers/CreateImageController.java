@@ -4,10 +4,12 @@
  */
 package controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import models.Image;
 
 public class CreateImageController {
@@ -49,7 +51,10 @@ public class CreateImageController {
     }
     
     public void onBuscarImagen() {
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(container.getScene().getWindow());
         
+        imageField.setText(selectedFile.getAbsolutePath());
     }
 
     public void setMainController(MainController mainController) {

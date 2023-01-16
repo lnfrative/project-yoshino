@@ -71,8 +71,6 @@ public class CreateImageController {
     public void setAlbumId(int albumId) {
         this.albumId = albumId;
     }
-   
-    
     
     private void destroy() {
         container.getScene().getWindow().hide();

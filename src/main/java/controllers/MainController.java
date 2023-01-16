@@ -148,7 +148,36 @@ public class MainController {
     }
     
     public void onModificarImagen() {
-        
+        try {            
+            int selectedAlbumIndex = albumesListView.getSelectionModel().getSelectedIndex();
+            int selectedImageIndex = imagenesListView.getSelectionModel().getSelectedIndex();
+            
+            if (selectedAlbumIndex != -1 && selectedImageIndex != -1) {
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/update_image.fxml"));
+                Parent root = loader.load();
+
+                UpdateImageController controller = loader.getController();
+                
+                controller.setMainController(this);
+                controller.setImage(images.get(selectedImageIndex));
+                controller.getUpdatedProperty().addListener((obs, oldVal, newVal) -> {
+                    buildImagesListView();
+                    Guardar.write("image.models", images);
+                });
+                
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(container.getScene().getWindow());
+
+                stage.setTitle("Update imagen");
+                stage.setScene(scene);
+                stage.show();
+            }
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
     
     public void onEliminarImagen() {
@@ -160,6 +189,10 @@ public class MainController {
             
             Guardar.write("image.models", images);
         }
+    }
+
+    public ListView getAlbumesListView() {
+        return albumesListView;
     }
     
     public void onOpenWindowToAddImage() {

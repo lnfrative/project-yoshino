@@ -60,8 +60,6 @@ public class MainController {
         buildAlbumesListView();
     }
     
-
-    
     public void removeAlbum() {
         int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
         
@@ -84,6 +82,10 @@ public class MainController {
     }
     
     public void onEliminarImagen() {
+        
+    }
+    
+    public void onAgregar() {
         
     }
     

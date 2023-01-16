@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" HBox.hgrow="NEVER" />
+      <VBox prefHeight="150.0" prefWidth="347.0">
+         <children>
+            <Text fx:id="description" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Rellenar con texto esto.">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="lugar" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Rellenar lugar aquí.">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="fecha" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Poner la fecha aquí.">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="gente" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres separados por coma." />
+         </children>
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

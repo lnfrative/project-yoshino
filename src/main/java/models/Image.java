@@ -7,23 +7,19 @@ package models;
 import java.util.ArrayList;
 
 public class Image extends Model {
+    private String path;
     private String description;
     private String lugar;
     private String fecha;
     private ArrayList<String> personas = new ArrayList();
-    private Integer albumId;
     
-    public Image(String description, String lugar, String fecha, ArrayList<Image> images) {
-        this(null, description, lugar, fecha, images);
-    }
-    
-    public Image(Integer albumId, String description, String lugar, String fecha, ArrayList<Image> images) {
+    public Image(String path, String description, String lugar, String fecha, ArrayList<Image> images) {
         super(images);
         
+        this.path = path;
         this.description = description;
         this.lugar = lugar;
         this.fecha = fecha;
-        this.albumId = albumId;
     }
     
     public void addPersona(String persona) {
@@ -32,10 +28,6 @@ public class Image extends Model {
 
     public String getDescription() {
         return description;
-    }
-
-    public Integer getAlbumId() {
-        return albumId;
     }
 
     public String getLugar() {
@@ -66,7 +58,9 @@ public class Image extends Model {
         this.personas = personas;
     }
 
-    public void setAlbumId(Integer albumId) {
-        this.albumId = albumId;
+    public String getPath() {
+        return path;
     }
+    
+    
 }

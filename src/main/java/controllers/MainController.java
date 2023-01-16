@@ -26,6 +26,9 @@ public class MainController {
     @FXML
     private ListView albumesListView;
     
+    @FXML
+    private ListView imagenesListView;
+    
     public void initialize() {
         // TODO: Init
     }
@@ -74,6 +77,14 @@ public class MainController {
 
     public ArrayList<Image> getImages() {
         return images;
+    }
+    
+    public void onModificar() {
+        
+    }
+    
+    public void onEliminarImagen() {
+        
     }
     
     private void buildAlbumesListView() {

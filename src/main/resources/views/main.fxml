@@ -89,7 +89,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane>
           <children>
@@ -117,13 +117,19 @@
       <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
         <children>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Imágenes" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                  <ListView fx:id="imagenesListView" layoutY="48.0" prefHeight="436.0" prefWidth="668.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="502.0" prefHeight="35.0" prefWidth="649.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onModificar" text="Modificar">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onEliminarImagen" text="Eliminar" />
+                     </children>
+                  </HBox>
         </children>
       </AnchorPane>
-        <AnchorPane>
-          <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Detalles" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-          </children>
-        </AnchorPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

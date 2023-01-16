@@ -56,6 +56,8 @@ public class MainController {
         
         buildAlbumesListView();
         
+        updateTotalImages();
+        
         imagenesListView.setCellFactory(param -> new ListCell<Image>() {
             private final ImageItem imageItem = new ImageItem();
             
@@ -229,7 +231,7 @@ public class MainController {
             albumesListView.getItems().add(album.getName());
         }
         
-        totalAlbumes.setText("Álbumes: " + albumes.size());
+        updateTotalAlbumes();
     }
     
     private void buildImagesListView() {
@@ -243,6 +245,14 @@ public class MainController {
             }
         }
         
+        updateTotalImages();
+    }
+    
+    private void updateTotalImages() {
         totalImages.setText("Imágenes: " + images.size());
+    }
+    
+    private void updateTotalAlbumes() {
+        totalAlbumes.setText("Álbumes: " + albumes.size());
     }
 }

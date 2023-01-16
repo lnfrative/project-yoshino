@@ -54,7 +54,11 @@ public class CreateImageController {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(container.getScene().getWindow());
         
-        imageField.setText(selectedFile.getAbsolutePath());
+        try {
+            imageField.setText(selectedFile.toURI().toURL().toExternalForm());
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void setMainController(MainController mainController) {

@@ -4,13 +4,17 @@
  */
 package controllers;
 
+import components.ImageItem;
+
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -35,10 +39,23 @@ public class MainController {
     private ListView albumesListView;
     
     @FXML
-    private ListView imagenesListView;
+    private ListView<Image> imagenesListView;
     
     public void initialize() {
-        // TODO: Init
+        imagenesListView.setCellFactory(param -> new ListCell<Image>() {
+            private final ImageItem imageItem = new ImageItem();
+            
+            @Override
+            protected void updateItem(Image image, boolean empty) {
+                super.updateItem(image, empty);
+                
+                if (!empty) {
+                    imageItem.setImage(image);
+                
+                    setGraphic(imageItem);
+                }
+            }
+        });
     }
     
     public void onOpenWindowToCreateAlbum() {
@@ -136,6 +153,16 @@ public class MainController {
     }
     
     private void buildImagesListView() {
-        totalAlbumes.setText("Imágenes: " + images.size());
+        imagenesListView.getItems().clear();
+        
+        Album albumSelected = albumes.get(albumesListView.getSelectionModel().getSelectedIndex());
+        
+        for (Image image : images) {
+            if (albumSelected.getId().equals(image.getAlbumId())) {
+                imagenesListView.getItems().add(image);
+            }
+        }
+        
+        totalImages.setText("Imágenes: " + images.size());
     }
 }

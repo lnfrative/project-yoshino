@@ -63,6 +63,10 @@ public class Image extends Model {
     public String getPath() {
         return path;
     }
+
+    public int getAlbumId() {
+        return albumId;
+    }
     
     
 }

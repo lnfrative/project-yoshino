@@ -4,12 +4,15 @@
  */
 package controllers;
 
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import models.Image;
 
 public class CreateImageController {
     private MainController mainController;
+    private int albumId;
     
     @FXML
     private Pane container;
@@ -27,7 +30,18 @@ public class CreateImageController {
     private TextField imageField;
     
     public void onCreate() {
+        String description = descriptionField.getText();
+        String lugar = lugarField.getText();
+        String fecha = fechaField.getText();
+        String path = imageField.getText();
         
+        if (!description.isEmpty() && !lugar.isEmpty() && !fecha.isEmpty() && !path.isEmpty()) {
+            Image image = new Image(path, description, lugar, fecha, new ArrayList(), albumId);
+            
+            mainController.addImage(image);
+            
+            destroy();
+        }
     }
     
     public void onCancel() {
@@ -41,6 +55,12 @@ public class CreateImageController {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
+    public void setAlbumId(int albumId) {
+        this.albumId = albumId;
+    }
+   
+    
     
     private void destroy() {
         container.getScene().getWindow().hide();

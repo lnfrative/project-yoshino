@@ -11,15 +11,17 @@ public class Image extends Model {
     private String description;
     private String lugar;
     private String fecha;
+    private int albumId;
     private ArrayList<String> personas = new ArrayList();
     
-    public Image(String path, String description, String lugar, String fecha, ArrayList<Image> images) {
+    public Image(String path, String description, String lugar, String fecha, ArrayList<Image> images, int albumId) {
         super(images);
         
         this.path = path;
         this.description = description;
         this.lugar = lugar;
         this.fecha = fecha;
+        this.albumId = albumId;
     }
     
     public void addPersona(String persona) {

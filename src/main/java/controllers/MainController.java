@@ -99,22 +99,27 @@ public class MainController {
     }
     
     public void onOpenWindowToAddImage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/create_image.fxml"));
-            Parent root = loader.load();
+        try {            
+            int selectedAlbumIndex = albumesListView.getSelectionModel().getSelectedIndex();
             
-            CreateImageController controller = loader.getController();
-            controller.setMainController(this);
-            
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(container.getScene().getWindow());
-            
-            stage.setTitle("Add image");
-            stage.setScene(scene);
-            stage.show();
+            if (selectedAlbumIndex != -1) {
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/create_image.fxml"));
+                Parent root = loader.load();
+
+                CreateImageController controller = loader.getController();
+                controller.setMainController(this);
+                controller.setAlbumId(albumes.get(selectedAlbumIndex).getId());
+                
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(container.getScene().getWindow());
+
+                stage.setTitle("Add image");
+                stage.setScene(scene);
+                stage.show();
+            }
         } catch (Exception e) {
             System.out.println("[ERROR] " + e.getMessage());
         }

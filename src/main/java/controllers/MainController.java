@@ -9,8 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -19,6 +21,12 @@ import models.*;
 public class MainController {
     private ArrayList<Album> albumes = new ArrayList();
     private ArrayList<Image> images = new ArrayList();
+    
+    @FXML
+    private Label totalAlbumes;
+    
+    @FXML
+    private Label totalImages;
     
     @FXML
     private VBox container;
@@ -33,7 +41,7 @@ public class MainController {
         // TODO: Init
     }
     
-    public void openWindowToCreateAlbum() {
+    public void onOpenWindowToCreateAlbum() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/create_album.fxml"));
             Parent root = loader.load();
@@ -65,7 +73,7 @@ public class MainController {
         buildImagesListView();
     }
     
-    public void removeAlbum() {
+    public void onRemoveAlbum() {
         int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
         
         if (selectedIndex != -1) {
@@ -82,7 +90,7 @@ public class MainController {
         return images;
     }
     
-    public void onModificar() {
+    public void onModificarImagen() {
         
     }
     
@@ -90,7 +98,7 @@ public class MainController {
         
     }
     
-    public void onAgregar() {
+    public void onOpenWindowToAddImage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/create_image.fxml"));
             Parent root = loader.load();
@@ -118,9 +126,11 @@ public class MainController {
         for (Album album : albumes) {
             albumesListView.getItems().add(album.getName());
         }
+        
+        totalAlbumes.setText("Álbumes: " + albumes.size());
     }
     
     private void buildImagesListView() {
-        // TODO
+        totalAlbumes.setText("Imágenes: " + images.size());
     }
 }

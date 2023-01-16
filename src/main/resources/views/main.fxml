@@ -104,12 +104,12 @@
                   <ListView fx:id="albumesListView" layoutY="47.0" prefHeight="436.0" prefWidth="223.0" />
                   <HBox alignment="CENTER" layoutX="1.0" layoutY="500.0" prefHeight="37.0" prefWidth="222.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#openWindowToCreateAlbum" text="Crear álbum">
+                        <Button mnemonicParsing="false" onAction="#onOpenWindowToCreateAlbum" text="Crear álbum">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#removeAlbum" text="Eliminar" />
+                        <Button mnemonicParsing="false" onAction="#onRemoveAlbum" text="Eliminar" />
                      </children>
                   </HBox>
           </children>
@@ -120,12 +120,12 @@
                   <ListView fx:id="imagenesListView" layoutY="48.0" prefHeight="436.0" prefWidth="668.0" />
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="502.0" prefHeight="35.0" prefWidth="649.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onAgregar" text="Agregar">
+                        <Button mnemonicParsing="false" onAction="#onOpenWindowToAddImage" text="Agregar">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#onModificar" text="Modificar">
+                        <Button mnemonicParsing="false" onAction="#onModificarImagen" text="Modificar">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -139,7 +139,7 @@
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Álbumes: 0" HBox.hgrow="ALWAYS">
+        <Label fx:id="totalAlbumes" maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Álbumes: 0" HBox.hgrow="ALWAYS">
           <font>
             <Font size="11.0" fx:id="x3" />
           </font>
@@ -148,7 +148,7 @@
           </textFill>
         </Label>
         <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-        <Label font="$x3" maxWidth="-1.0" text="Imágenes: 0" textFill="$x4" HBox.hgrow="NEVER" />
+        <Label fx:id="totalImages" font="$x3" maxWidth="-1.0" text="Imágenes: 0" textFill="$x4" HBox.hgrow="NEVER" />
       </children>
       <padding>
         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

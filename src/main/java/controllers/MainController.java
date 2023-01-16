@@ -99,13 +99,15 @@ public class MainController {
     public void addAlbum(Album album) {
         albumes.add(album);
         buildAlbumesListView();
-        guardar();
+        
+        Guardar.write("album.models", albumes);
     }
     
     public void addImage(Image image) {
         images.add(image);
         buildImagesListView();
-        guardar();
+        
+        Guardar.write("image.models", images);
     }
     
     public void onRemoveAlbum() {
@@ -122,6 +124,8 @@ public class MainController {
         if (selectedIndex != -1 && !albumInUse) {
             albumes.remove(selectedIndex);
             buildAlbumesListView();
+            
+            Guardar.write("album.models", albumes);
         }
     }
     
@@ -152,6 +156,8 @@ public class MainController {
         if (selectedIndex != -1) {
             images.remove(selectedIndex);
             buildImagesListView();
+            
+            Guardar.write("image.models", images);
         }
     }
     
@@ -204,10 +210,5 @@ public class MainController {
         }
         
         totalImages.setText("Imágenes: " + images.size());
-    }
-    
-    private void guardar() {
-        Guardar.write("image.models", images);
-        Guardar.write("album.models", albumes);
     }
 }

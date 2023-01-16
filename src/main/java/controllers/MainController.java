@@ -60,6 +60,11 @@ public class MainController {
         buildAlbumesListView();
     }
     
+    public void addImage(Image image) {
+        images.add(image);
+        buildImagesListView();
+    }
+    
     public void removeAlbum() {
         int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
         
@@ -86,7 +91,25 @@ public class MainController {
     }
     
     public void onAgregar() {
-        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/create_image.fxml"));
+            Parent root = loader.load();
+            
+            CreateImageController controller = loader.getController();
+            controller.setMainController(this);
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(container.getScene().getWindow());
+            
+            stage.setTitle("Add image");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
     
     private void buildAlbumesListView() {
@@ -95,5 +118,9 @@ public class MainController {
         for (Album album : albumes) {
             albumesListView.getItems().add(album.getName());
         }
+    }
+    
+    private void buildImagesListView() {
+        // TODO
     }
 }

@@ -7,7 +7,9 @@ package models;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Model {
+import java.io.Serializable;
+
+public class Model implements Serializable {
     private Integer id = null;
     
     public Model(ArrayList<? extends Model> models) {

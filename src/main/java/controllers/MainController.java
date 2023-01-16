@@ -5,6 +5,13 @@
 package controllers;
 
 import components.ImageItem;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 
 import java.util.ArrayList;
 import javafx.fxml.FXML;
@@ -42,6 +49,8 @@ public class MainController {
     private ListView<Image> imagenesListView;
     
     public void initialize() {
+        read();
+        
         imagenesListView.setCellFactory(param -> new ListCell<Image>() {
             private final ImageItem imageItem = new ImageItem();
             
@@ -59,6 +68,10 @@ public class MainController {
                 }
             }
         });
+        
+        
+        buildAlbumesListView();
+        //buildImagesListView();
     }
     
     public void onOpenWindowToCreateAlbum() {
@@ -86,11 +99,13 @@ public class MainController {
     public void addAlbum(Album album) {
         albumes.add(album);
         buildAlbumesListView();
+        guardar();
     }
     
     public void addImage(Image image) {
         images.add(image);
         buildImagesListView();
+        guardar();
     }
     
     public void onRemoveAlbum() {
@@ -189,5 +204,43 @@ public class MainController {
         }
         
         totalImages.setText("Imágenes: " + images.size());
+    }
+    
+    private void guardar() {
+        try {
+          OutputStream imageOutput = new FileOutputStream("image.models");
+          OutputStream albumesOutput = new FileOutputStream("album.models");
+          
+            try (ObjectOutputStream os = new ObjectOutputStream(imageOutput)) {
+                os.writeObject(images);
+                os.close();
+            }
+            
+            try (ObjectOutputStream os = new ObjectOutputStream(albumesOutput)) {
+                os.writeObject(albumes);
+                os.close();
+            }
+        } catch(IOException e) {
+          System.out.println(e.getMessage());
+        }
+    }
+    
+    private void read() {
+        try {
+            InputStream imageInput = new FileInputStream("image.models");
+            InputStream albumInput = new FileInputStream("album.models");
+            
+            try (ObjectInputStream in = new ObjectInputStream(imageInput)) {
+                images = (ArrayList<Image>) in.readObject();
+                in.close();
+            }
+                        
+            try (ObjectInputStream in = new ObjectInputStream(albumInput)) {
+                albumes = (ArrayList<Album>) in.readObject();
+                in.close();
+            }
+        } catch(Exception e) {
+          System.out.println(e.getMessage());
+        }
     }
 }

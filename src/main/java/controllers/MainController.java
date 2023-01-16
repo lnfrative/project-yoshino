@@ -50,8 +50,16 @@ public class MainController {
     private ListView<Image> imagenesListView;
     
     public void initialize() {
-        images = (ArrayList<Image>) Guardar.read("image.models");
-        albumes = (ArrayList<Album>) Guardar.read("album.models");
+        Object imageModelsObject = Guardar.read("image.models");
+        Object albumModelsObject = Guardar.read("album.models");
+        
+        if (imageModelsObject != null) {
+            images = (ArrayList<Image>) Guardar.read("image.models");
+        }
+        
+        if (albumModelsObject != null) {
+            albumes = (ArrayList<Album>) Guardar.read("album.models");
+        }
         
         buildAlbumesListView();
         

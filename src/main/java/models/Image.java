@@ -12,9 +12,9 @@ public class Image extends Model {
     private String lugar;
     private String fecha;
     private int albumId;
-    private ArrayList<String> personas = new ArrayList();
+    private String gente;
     
-    public Image(String path, String description, String lugar, String fecha, ArrayList<Image> images, int albumId) {
+    public Image(String path, String description, String lugar, String fecha, ArrayList<Image> images, int albumId, String gente) {
         super(images);
         
         this.path = path;
@@ -22,10 +22,23 @@ public class Image extends Model {
         this.lugar = lugar;
         this.fecha = fecha;
         this.albumId = albumId;
+        this.gente = gente;
     }
-    
-    public void addPersona(String persona) {
-        this.personas.add(persona);
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setAlbumId(int albumId) {
+        this.albumId = albumId;
+    }
+
+    public void setGente(String gente) {
+        this.gente = gente;
+    }
+
+    public String getGente() {
+        return gente;
     }
 
     public String getDescription() {
@@ -40,10 +53,6 @@ public class Image extends Model {
         return fecha;
     }
 
-    public ArrayList<String> getPersonas() {
-        return personas;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -54,10 +63,6 @@ public class Image extends Model {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public void setPersonas(ArrayList<String> personas) {
-        this.personas = personas;
     }
 
     public String getPath() {

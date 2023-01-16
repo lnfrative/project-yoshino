@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateImageController">
+<Pane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateImageController">
    <children>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="350.0">
+      <VBox alignment="CENTER" prefHeight="435.0" prefWidth="350.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
             <TextField fx:id="descriptionField">
@@ -26,6 +26,12 @@
             </TextField>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" />
             <TextField fx:id="fechaField">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personas" />
+            <TextField fx:id="genteField">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
@@ -48,7 +54,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="52.0" prefWidth="350.0">
+            <HBox alignment="BOTTOM_CENTER" prefWidth="330.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onCreate" text="Add">
                      <HBox.margin>
@@ -57,6 +63,9 @@
                   </Button>
                   <Button mnemonicParsing="false" onAction="#onCancel" text="Cancelar" />
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <padding>

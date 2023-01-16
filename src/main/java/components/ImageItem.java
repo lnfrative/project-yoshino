@@ -48,7 +48,7 @@ public class ImageItem extends HBox {
         description.setText(image.getDescription());
         lugar.setText(image.getLugar());
         fecha.setText(image.getFecha());
-        gente.setText("TODO");
+        gente.setText(image.getGente());
     }
 
     public void setImage(Image image) {

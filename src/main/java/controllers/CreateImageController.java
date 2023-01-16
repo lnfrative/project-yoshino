@@ -5,7 +5,6 @@
 package controllers;
 
 import java.io.File;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -31,14 +30,18 @@ public class CreateImageController {
     @FXML
     private TextField imageField;
     
+    @FXML
+    private TextField genteField;
+    
     public void onCreate() {
         String description = descriptionField.getText();
         String lugar = lugarField.getText();
         String fecha = fechaField.getText();
         String path = imageField.getText();
+        String gente = genteField.getText();
         
         if (!description.isEmpty() && !lugar.isEmpty() && !fecha.isEmpty() && !path.isEmpty()) {
-            Image image = new Image(path, description, lugar, fecha, new ArrayList(), albumId);
+            Image image = new Image(path, description, lugar, fecha, mainController.getImages(), albumId, gente);
             
             mainController.addImage(image);
             

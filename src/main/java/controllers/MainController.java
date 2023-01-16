@@ -90,8 +90,16 @@ public class MainController {
     
     public void onRemoveAlbum() {
         int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
+        Album albumSelected = albumes.get(selectedIndex);
+        boolean albumInUse = false;
         
-        if (selectedIndex != -1) {
+        for (Image image : images) {
+            if (albumSelected.getId().equals(image.getAlbumId())) {
+                albumInUse = true;
+            }
+        }
+        
+        if (selectedIndex != -1 && !albumInUse) {
             albumes.remove(selectedIndex);
             buildAlbumesListView();
         }
@@ -110,7 +118,12 @@ public class MainController {
     }
     
     public void onEliminarImagen() {
+        int selectedIndex = imagenesListView.getSelectionModel().getSelectedIndex();
         
+        if (selectedIndex != -1) {
+            images.remove(selectedIndex);
+            buildImagesListView();
+        }
     }
     
     public void onOpenWindowToAddImage() {

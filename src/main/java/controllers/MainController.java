@@ -19,12 +19,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import models.*;
-import utils.Guardar;
+import utils.*;
 
 public class MainController {
     private Integer previousAlbumSelected = -1;
     
+    private SearchParameters searchParameters = new SearchParameters();
+    
     private ArrayList<Album> albumes = new ArrayList();
+    
     private ArrayList<Image> images = new ArrayList();
     
     @FXML
@@ -92,6 +95,28 @@ public class MainController {
             stage.initOwner(container.getScene().getWindow());
             
             stage.setTitle("Create album");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
+    }
+    
+    public void onOpenParametersWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/update_search_parameters.fxml"));
+            Parent root = loader.load();
+            
+            UpdateSearchParametersController controller = loader.getController();
+            controller.setMainController(this);
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(container.getScene().getWindow());
+            
+            stage.setTitle("Actualizar parámetros de visualización");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -195,6 +220,10 @@ public class MainController {
 
     public ListView getAlbumesListView() {
         return albumesListView;
+    }
+
+    public SearchParameters getSearchParameters() {
+        return searchParameters;
     }
     
     public void onOpenWindowToAddImage() {

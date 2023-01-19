@@ -72,6 +72,4 @@ public class Image extends Model {
     public int getAlbumId() {
         return albumId;
     }
-    
-    
 }

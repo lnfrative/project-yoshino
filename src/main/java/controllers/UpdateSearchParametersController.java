@@ -28,9 +28,9 @@ public class UpdateSearchParametersController {
     public void onUpdate() {
         SearchParameters searchParameters = this.mainController.getSearchParameters();
         
-        searchParameters.setRangoFechas(rangoFechasField.getText());
-        searchParameters.setLugares(lugaresField.getText());
-        searchParameters.setPersonas(personasField.getText());
+        searchParameters.setRangoFechasValue(rangoFechasField.getText());
+        searchParameters.setLugaresValue(lugaresField.getText());
+        searchParameters.setPersonasValue(personasField.getText());
         
         destroy();
     }
@@ -50,8 +50,8 @@ public class UpdateSearchParametersController {
     public void build() {
         SearchParameters searchParameters = this.mainController.getSearchParameters();
         
-        rangoFechasField.setText(searchParameters.getRangoFechas());
-        lugaresField.setText(searchParameters.getLugares());
-        personasField.setText(searchParameters.getPersonas());
+        rangoFechasField.setText(searchParameters.getRangoFechasValue());
+        lugaresField.setText(searchParameters.getLugaresValue());
+        personasField.setText(searchParameters.getPersonasValue());
     }
 }

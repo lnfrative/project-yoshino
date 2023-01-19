@@ -136,6 +136,11 @@
                            </HBox.margin>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#onEliminarImagen" text="Eliminar" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onSlideMode" text="Slide mode">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
         </children>

@@ -223,6 +223,37 @@ public class MainController {
         }
     }
     
+    public void onSlideMode() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/slide_mode.fxml"));
+            Parent root = loader.load();
+            
+            SlideModeController controller = loader.getController();
+            
+            ArrayList<Image> slideImages = new ArrayList();
+            
+            for (Image image : images) {
+                if (searchParameters.checkIfImageMeetsParameters(image)) {
+                    slideImages.add(image);
+                }
+            }
+            
+            controller.setImages(slideImages);
+            
+            new Thread(controller).start();
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+
+            
+            stage.setTitle("Slide mode");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
+    }
+    
     public void onParametersUpdated() {
         buildImagesListView();
     }

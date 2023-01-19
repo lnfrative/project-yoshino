@@ -18,10 +18,6 @@ public class SearchParameters {
     private String lugares = "";
     
     private String personas = "";
-    
-    public SearchParameters(int albumId) {
-        this.albumId = albumId;
-    }
 
     public String getRangoFechasValue() {
         return rangoFechas;

@@ -159,7 +159,11 @@ public class MainController {
     
     public void onSelectAlbum() {
         int selectedIndex = albumesListView.getSelectionModel().getSelectedIndex();
+        
         if (selectedIndex != previousAlbumSelected && selectedIndex != -1) {
+            
+            searchParameters.setAlbumId(albumes.get(selectedIndex).getId());
+            
             buildImagesListView();
         }
         
@@ -266,10 +270,8 @@ public class MainController {
     private void buildImagesListView() {
         imagenesListView.getItems().clear();
         
-        Integer albumSelectedIndex = albumes.get(albumesListView.getSelectionModel().getSelectedIndex()).getId();
-        
         for (Image image : images) {
-            if (albumSelectedIndex == image.getAlbumId()) {
+            if (searchParameters.checkIfImageMeetsParameters(image)) {
                 imagenesListView.getItems().add(image);
             }
         }

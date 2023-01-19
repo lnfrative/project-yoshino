@@ -18,7 +18,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="rangoFechasField" promptText="dd/mm/yyyyy, dd/mm/yyyy">
+            <TextField fx:id="rangoFechasField" promptText="yyyy-mm-dd, yyyy-mm-dd">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

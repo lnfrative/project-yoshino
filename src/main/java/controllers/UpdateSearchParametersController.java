@@ -32,6 +32,8 @@ public class UpdateSearchParametersController {
         searchParameters.setLugaresValue(lugaresField.getText());
         searchParameters.setPersonasValue(personasField.getText());
         
+        mainController.onParametersUpdated();
+        
         destroy();
     }
     

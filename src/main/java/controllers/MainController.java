@@ -109,6 +109,7 @@ public class MainController {
             
             UpdateSearchParametersController controller = loader.getController();
             controller.setMainController(this);
+            controller.build();
             
             Stage stage = new Stage();
             Scene scene = new Scene(root);
@@ -220,6 +221,10 @@ public class MainController {
             
             Guardar.write("image.models", images);
         }
+    }
+    
+    public void onParametersUpdated() {
+        buildImagesListView();
     }
 
     public ListView getAlbumesListView() {

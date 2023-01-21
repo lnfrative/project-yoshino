@@ -27,25 +27,20 @@ public class SlideModeController implements Runnable {
         
         int index = 0;
         
-        while (true) {
-            System.out.println(running);
-            
-            try {
-                while (running) {
-                    imageView.setImage(new javafx.scene.image.Image(images.get(index).getPath()));
+        try {
+            while (running) {
+                imageView.setImage(new javafx.scene.image.Image(images.get(index).getPath()));
 
-                    index++;
+                index++;
 
-                    Thread.sleep(Integer.parseInt(milisecondsField.getText()));
-                    
-                    if (index > (images.size() - 1)) {
-                        index = 0;
-                    }
+                Thread.sleep(Integer.parseInt(milisecondsField.getText()));
+
+                if (index > (images.size() - 1)) {
+                    index = 0;
                 }
-            } catch(Exception e) {
-                System.out.println(e.getMessage());
             }
-
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -53,6 +48,8 @@ public class SlideModeController implements Runnable {
     
     public void onPlay() {
         this.running = true;
+        
+        new Thread(this).start();
     }
     
     public void onPausa() {

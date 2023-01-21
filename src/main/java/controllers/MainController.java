@@ -180,18 +180,17 @@ public class MainController {
     }
     
     public void onModificarImagen() {
-        try {            
-            int selectedAlbumIndex = albumesListView.getSelectionModel().getSelectedIndex();
-            int selectedImageIndex = imagenesListView.getSelectionModel().getSelectedIndex();
+        try {
+            Image selectedImage = imagenesListView.getSelectionModel().getSelectedItem();
             
-            if (selectedAlbumIndex != -1 && selectedImageIndex != -1) {
+            if (selectedImage != null) {
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/update_image.fxml"));
                 Parent root = loader.load();
 
                 UpdateImageController controller = loader.getController();
                 
                 controller.setMainController(this);
-                controller.setImage(images.get(selectedImageIndex));
+                controller.setImage(images.get(images.indexOf(selectedImage)));
                 controller.getUpdatedProperty().addListener((obs, oldVal, newVal) -> {
                     buildImagesListView();
                     Guardar.write("image.models", images);
@@ -213,10 +212,10 @@ public class MainController {
     }
     
     public void onEliminarImagen() {
-        int selectedIndex = imagenesListView.getSelectionModel().getSelectedIndex();
+        Image selectedImage = imagenesListView.getSelectionModel().getSelectedItem();
         
-        if (selectedIndex != -1) {
-            images.remove(selectedIndex);
+        if (selectedImage != null) {
+            images.remove(images.indexOf(selectedImage));
             buildImagesListView();
             
             Guardar.write("image.models", images);
